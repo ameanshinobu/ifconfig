@@ -102,7 +102,7 @@ func (this *MainController) GetKeepAlive() {
 }
 
 func (this *MainController) GetAll() {
-	this.Data["Email"] = "missdeer@dfordsoft.com"
+	this.Data["Email"] = "admin@ifconfig.tw"
 	this.Data["UserAgent"] = this.Ctx.Request.UserAgent()
 	ip := this.Ctx.Input.IP()
 	names, err := net.LookupAddr(ip)
@@ -169,7 +169,7 @@ type ifconfig struct {
 
 func (this *MainController) GetAllXML() {
 	thisData := ifconfig{}
-	thisData.Email = "missdeer@dfordsoft.com"
+	thisData.Email = "admin@ifconfig.tw"
 	thisData.UserAgent = this.Ctx.Request.UserAgent()
 
 	ip := this.Ctx.Input.IP()
@@ -221,7 +221,7 @@ func (this *MainController) GetAllXML() {
 
 func (this *MainController) GetAllJSON() {
 	thisData := make(map[string]interface{})
-	thisData["Email"] = "missdeer@dfordsoft.com"
+	thisData["Email"] = "admin@ifconfig.tw"
 	thisData["UserAgent"] = this.Ctx.Request.UserAgent()
 	ip := this.Ctx.Input.IP()
 	names, err := net.LookupAddr(ip)
@@ -275,7 +275,7 @@ func (this *MainController) Get() {
 		this.Abort("404")
 		return
 	}
-	this.Data["Email"] = "missdeer@dfordsoft.com"
+	this.Data["Email"] = "admin@ifconfig.tw"
 	this.Data["UserAgent"] = this.Ctx.Request.UserAgent()
 	ip := this.Ctx.Input.IP()
 	names, err := net.LookupAddr(ip)
