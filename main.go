@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/astaxie/beego"
-	_ "github.com/missdeer/ifconfig/routers"
+	_ "../ifconfig/routers"
 	"os"
 )
 
@@ -16,5 +16,5 @@ func main() {
 	if port = os.Getenv(PortVar); port == "" {
 		port = "8080"
 	}
-	beego.Run(beego.HttpAddr + ":" + port)
+	beego.Run(beego.BConfig.Listen.HTTPAddr + ":" + port)
 }
