@@ -12,7 +12,7 @@
     <meta name="author" content="{{.Author}}" />
     <link rel="shortcut icon" href="/static/img/favicon.ico" />
     <link rev="made" href="mailto: {{.Email}}" />
-    <title>What Is My IP Address? - Yet Another ifconfig</title>
+    <title>What Is My IP Address? - Powered by ifconfig.tw</title>
     <style type="text/css">
     * {margin:0; padding:0;font-style:normal;font-weight:normal;font-family:Arial,sans-serif;font-size:13px;color:#333;}
       body{}
@@ -52,7 +52,7 @@
         <table>
           <tr>
             <td>
-              <h1><a href="http://ifconfig.jd-app.com">What Is My IP Address? - Yet Another ifconfig</a></h1>
+              <h1><a href="http://ifconfig.tw">What Is My IP Address? - Powered by ifconfig.tw</a></h1>
             </td>
             <td></td>
           </tr>
@@ -63,37 +63,12 @@
           </tr>
         </table>
       </div>
-      <div id="ads">
-<!-- Ads begin -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-    style="display:inline-block;width:728px;height:15px"
-    data-ad-client="ca-pub-3435940217424489"
-    data-ad-slot="9166587836"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<!-- Ads end -->
-      </div>
       <div id="info_area">
         <h2>Your Connection</h2>
         <table id="info_table" summary="info">
           <tr>
             <td class="info_table_label">IP Address</td>
             <td id="ip_address_cell"><strong id="ip_address">{{.IP}}</strong></td>
-            <td rowspan="8" id="table_ads">
-<!-- Ads begin -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-    style="display:inline-block;width:250px;height:250px"
-    data-ad-client="ca-pub-3435940217424489"
-    data-ad-slot="9166587836"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<!-- Ads end -->
-
-            </td>
           </tr>
           <tr><td class="info_table_label">Remote Host</td><td>{{.Host}}</td></tr>
           <tr><td class="info_table_label">User Agent</td><td>{{.UserAgent}}</td></tr>
@@ -111,41 +86,31 @@
         </table>
       </div>
       <div id="middle">
-<!-- Ads begin -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-    style="display:inline-block;width:728px;height:90px"
-    data-ad-client="ca-pub-3435940217424489"
-    data-ad-slot="9166587836"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<!-- Ads end -->
       </div>
       <div id="cli_wrap">
         <h2>Command Line Interface</h2>
         <table id="cli_table" summary="cli">
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com</td><td class="cli_arrow">&rArr;</td><td>{{.IP}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/ip</td><td class="cli_arrow">&rArr;</td><td>{{.IP}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/host</td><td class="cli_arrow">&rArr;</td><td>{{.Host}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/ua</td><td class="cli_arrow">&rArr;</td><td>{{.UserAgent}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/port</td><td class="cli_arrow">&rArr;</td><td>{{.Port}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/lang</td><td class="cli_arrow">&rArr;</td><td>{{.Lang}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/keepalive</td><td class="cli_arrow">&rArr;</td><td>{{.Keepalive}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/connection</td><td class="cli_arrow">&rArr;</td><td>{{.Connection}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/encoding</td><td class="cli_arrow">&rArr;</td><td>{{.Encoding}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/mime</td><td class="cli_arrow">&rArr;</td><td>{{.Mime}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/charset</td><td class="cli_arrow">&rArr;</td><td>{{.Charset}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/via</td><td class="cli_arrow">&rArr;</td><td>{{.Via}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/forwarded</td><td class="cli_arrow">&rArr;</td><td>{{.Forwarded}}</td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/all</td><td class="cli_arrow">&rArr;</td><td>ip_addr: {{.IP}}<br />remote_host: {{.Host}} <br />user_agent: {{.UserAgent}}<br />port: {{.Port}}<br />lang: {{.Lang}}<br />connection: {{.Connection}}<br />keep_alive: {{.Keepalive}}<br />encoding: {{.Encoding}}<br />mime: {{.Mime}}<br />charset: {{.Charset}}<br />via: {{.Via}}<br />forwarded: {{.Forwarded}}<br /></td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/all.xml</td><td class="cli_arrow">&rArr;</td><td>&lt;info&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;charset&gt;{{.Charset}}&lt;/charset&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;connection&gt;{{.Connection}}&lt;/connection&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;encoding&gt;{{.Encoding}}&lt;/encoding&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;forwarded&gt;{{.Forwarded}}&lt;/forwarded&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ip_addr&gt;{{.IP}}&lt;/ip_addr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;keep_alive&gt;{{.Keepalive}}&lt;/keep_alive&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;lang&gt;{{.Lang}}&lt;/lang&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;mime&gt;{{.Mime}}&lt;/mime&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;port&gt;{{.Port}}&lt;/port&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;remote_host&gt;{{.Host}}&lt;/remote_host&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;user_agent&gt;{{.UserAgent}}&lt;/user_agent&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;via&gt;{{.Via}}&lt;/via&gt;<br />
+          <tr><td class="cli_command">$ curl ifconfig.tw</td><td class="cli_arrow">&rArr;</td><td>{{.IP}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/ip</td><td class="cli_arrow">&rArr;</td><td>{{.IP}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/host</td><td class="cli_arrow">&rArr;</td><td>{{.Host}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/ua</td><td class="cli_arrow">&rArr;</td><td>{{.UserAgent}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/port</td><td class="cli_arrow">&rArr;</td><td>{{.Port}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/lang</td><td class="cli_arrow">&rArr;</td><td>{{.Lang}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/keepalive</td><td class="cli_arrow">&rArr;</td><td>{{.Keepalive}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/connection</td><td class="cli_arrow">&rArr;</td><td>{{.Connection}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/encoding</td><td class="cli_arrow">&rArr;</td><td>{{.Encoding}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/mime</td><td class="cli_arrow">&rArr;</td><td>{{.Mime}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/charset</td><td class="cli_arrow">&rArr;</td><td>{{.Charset}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/via</td><td class="cli_arrow">&rArr;</td><td>{{.Via}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/forwarded</td><td class="cli_arrow">&rArr;</td><td>{{.Forwarded}}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/all</td><td class="cli_arrow">&rArr;</td><td>ip_addr: {{.IP}}<br />remote_host: {{.Host}} <br />user_agent: {{.UserAgent}}<br />port: {{.Port}}<br />lang: {{.Lang}}<br />connection: {{.Connection}}<br />keep_alive: {{.Keepalive}}<br />encoding: {{.Encoding}}<br />mime: {{.Mime}}<br />charset: {{.Charset}}<br />via: {{.Via}}<br />forwarded: {{.Forwarded}}<br /></td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/all.xml</td><td class="cli_arrow">&rArr;</td><td>&lt;info&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;charset&gt;{{.Charset}}&lt;/charset&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;connection&gt;{{.Connection}}&lt;/connection&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;encoding&gt;{{.Encoding}}&lt;/encoding&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;forwarded&gt;{{.Forwarded}}&lt;/forwarded&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;ip_addr&gt;{{.IP}}&lt;/ip_addr&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;keep_alive&gt;{{.Keepalive}}&lt;/keep_alive&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;lang&gt;{{.Lang}}&lt;/lang&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;mime&gt;{{.Mime}}&lt;/mime&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;port&gt;{{.Port}}&lt;/port&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;remote_host&gt;{{.Host}}&lt;/remote_host&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;user_agent&gt;{{.UserAgent}}&lt;/user_agent&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;via&gt;{{.Via}}&lt;/via&gt;<br />
 &lt;/info&gt;<br />
 </td></tr>
-          <tr><td class="cli_command">$ curl ifconfig.jd-app.com/all.json</td><td class="cli_arrow">&rArr;</td><td>{"connection":"{{.Connection}}","ip_addr":"{{.IP}}","lang":"{{.Lang}}","remote_host":"{{.Host}}","user_agent":"{{.UserAgent}}","charset":"{{.Charset}}","port":"{{.Port}}","via":"{{.Via}}","forwarded":"{{.Forwarded}}","mime":"{{.Mime}}","keep_alive":"{{.Keepalive}}","encoding":"{{.Encoding}}"}</td></tr>
+          <tr><td class="cli_command">$ curl ifconfig.tw/all.json</td><td class="cli_arrow">&rArr;</td><td>{"connection":"{{.Connection}}","ip_addr":"{{.IP}}","lang":"{{.Lang}}","remote_host":"{{.Host}}","user_agent":"{{.UserAgent}}","charset":"{{.Charset}}","port":"{{.Port}}","via":"{{.Via}}","forwarded":"{{.Forwarded}}","mime":"{{.Mime}}","keep_alive":"{{.Keepalive}}","encoding":"{{.Encoding}}"}</td></tr>
         </table>
       </div>
-      <div id="footer">&copy; 2014 <a href="http://minidump.info">minidump.info</a></div>
+      <div id="footer">&copy; 2016 <a href="http://ifconfig.tw">ifconfig.tw</a></div>
     </div>
     <!--
     <script type="text/javascript">
