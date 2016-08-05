@@ -22,5 +22,5 @@ func init() {
 	beego.Router("/all", &controllers.MainController{}, "get:GetAll")
 	beego.Router("/all.xml", &controllers.MainController{}, "get:GetAllXML")
 	beego.Router("/all.json", &controllers.MainController{}, "get:GetAllJSON")
-	beego.SetStaticPath("/.well-known/acme-challenge", "/var/www/letsencrypt/.well-known/")
+	beego.SetStaticPath("/.well-known/acme-challenge", "/var/www/letsencrypt/.well-known/acme-challenge")
 }
