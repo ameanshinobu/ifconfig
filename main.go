@@ -46,12 +46,10 @@ func (service *Service) Manage() (string, error) {
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt, os.Kill, syscall.SIGTERM)
 
-	var port string
-	if port = os.Getenv(PortVar); port == "" {
-		port = "8080"
-	}
+	fmt.Printf("HTTP Port: %d\n", beego.BConfig.Listen.HTTPPort)
 	go func() {
-		beego.Run(beego.BConfig.Listen.HTTPAddr + ":" + port) // Block
+		// beego.Run(beego.BConfig.Listen.HTTPAddr + ":" + fmt.Sprintf("%d", beego.BConfig.Listen.HTTPPort)) // Block
+		beego.Run()
 		fmt.Println("beego exit")
 		interrupt <- os.Kill
 	}()
