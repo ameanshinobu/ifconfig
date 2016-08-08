@@ -1,12 +1,13 @@
 package controllers
 
 import (
-	"bytes"
+	// "bytes"
 	"fmt"
 	"github.com/astaxie/beego"
 	"net"
 	"os"
 	"strings"
+	// "unicode/utf8"
 )
 
 type MainController struct {
@@ -21,7 +22,8 @@ func (this *MainController) GetForwarded() {
 }
 
 func (this *MainController) GetHost() {
-	ip := this.Ctx.Input.IP()
+	ip := this.Ctx.Request.RemoteAddr
+
 	names, err := net.LookupAddr(ip)
 	if err != nil || len(names) == 0 {
 		this.Data["Value"] = ""
@@ -36,14 +38,12 @@ func (this *MainController) GetHost() {
 }
 
 func (this *MainController) GetIP() {
-	this.Data["Value"] = this.Ctx.Input.IP()
+	this.Data["Value"] = getIP(this.Ctx.Request.RemoteAddr)
 	this.TplName = "value.tpl"
 }
 
 func (this *MainController) GetPort() {
-	remote_addr := []byte(this.Ctx.Request.RemoteAddr)
-	pos := bytes.IndexByte(remote_addr, ':')
-	this.Data["Value"] = string(remote_addr[pos+1:])
+	this.Data["Value"] = getPort(this.Ctx.Request.RemoteAddr)
 	this.TplName = "value.tpl"
 }
 
@@ -104,7 +104,7 @@ func (this *MainController) GetKeepAlive() {
 func (this *MainController) GetAll() {
 	this.Data["Email"] = "admin@ifconfig.tw"
 	this.Data["UserAgent"] = this.Ctx.Request.UserAgent()
-	ip := this.Ctx.Input.IP()
+	ip := getIP(this.Ctx.Request.RemoteAddr)
 	names, err := net.LookupAddr(ip)
 	if err != nil || len(names) == 0 {
 		this.Data["Host"] = ""
@@ -115,10 +115,8 @@ func (this *MainController) GetAll() {
 		}
 		this.Data["Host"] = value
 	}
-	this.Data["IP"] = this.Ctx.Input.IP()
-	remote_addr := []byte(this.Ctx.Request.RemoteAddr)
-	pos := bytes.IndexByte(remote_addr, ':')
-	this.Data["Port"] = string(remote_addr[pos+1:])
+	this.Data["IP"] = getIP(this.Ctx.Request.RemoteAddr)
+	this.Data["Port"] = getPort(this.Ctx.Request.RemoteAddr)
 	this.Data["Method"] = this.Ctx.Request.Method
 	if len(this.Ctx.Request.Header["Accept-Encoding"]) > 0 {
 		this.Data["Encoding"] = this.Ctx.Request.Header["Accept-Encoding"][0]
@@ -172,7 +170,7 @@ func (this *MainController) GetAllXML() {
 	thisData.Email = "admin@ifconfig.tw"
 	thisData.UserAgent = this.Ctx.Request.UserAgent()
 
-	ip := this.Ctx.Input.IP()
+	ip := getIP(this.Ctx.Request.RemoteAddr)
 	names, err := net.LookupAddr(ip)
 	if err != nil || len(names) == 0 {
 		thisData.Host = ""
@@ -184,10 +182,8 @@ func (this *MainController) GetAllXML() {
 		thisData.Host = value
 	}
 
-	thisData.IP = this.Ctx.Input.IP()
-	remote_addr := []byte(this.Ctx.Request.RemoteAddr)
-	pos := bytes.IndexByte(remote_addr, ':')
-	thisData.Port = string(remote_addr[pos+1:])
+	thisData.IP = getIP(this.Ctx.Request.RemoteAddr)
+	thisData.Port = getPort(this.Ctx.Request.RemoteAddr)
 	thisData.Method = this.Ctx.Request.Method
 	if len(this.Ctx.Request.Header["Accept-Encoding"]) > 0 {
 		thisData.Encoding = this.Ctx.Request.Header["Accept-Encoding"][0]
@@ -223,7 +219,7 @@ func (this *MainController) GetAllJSON() {
 	thisData := make(map[string]interface{})
 	thisData["Email"] = "admin@ifconfig.tw"
 	thisData["UserAgent"] = this.Ctx.Request.UserAgent()
-	ip := this.Ctx.Input.IP()
+	ip := getIP(this.Ctx.Request.RemoteAddr)
 	names, err := net.LookupAddr(ip)
 	if err != nil || len(names) == 0 {
 		thisData["Host"] = ""
@@ -235,10 +231,8 @@ func (this *MainController) GetAllJSON() {
 		thisData["Host"] = value
 	}
 
-	thisData["IP"] = this.Ctx.Input.IP()
-	remote_addr := []byte(this.Ctx.Request.RemoteAddr)
-	pos := bytes.IndexByte(remote_addr, ':')
-	thisData["Port"] = string(remote_addr[pos+1:])
+	thisData["IP"] = getIP(this.Ctx.Request.RemoteAddr)
+	thisData["Port"] = getPort(this.Ctx.Request.RemoteAddr)
 	thisData["Method"] = this.Ctx.Request.Method
 	if len(this.Ctx.Request.Header["Accept-Encoding"]) > 0 {
 		thisData["Encoding"] = this.Ctx.Request.Header["Accept-Encoding"][0]
@@ -277,7 +271,7 @@ func (this *MainController) Get() {
 	}
 	this.Data["Email"] = "admin@ifconfig.tw"
 	this.Data["UserAgent"] = this.Ctx.Request.UserAgent()
-	ip := this.Ctx.Input.IP()
+	ip := getIP(this.Ctx.Request.RemoteAddr)
 	names, err := net.LookupAddr(ip)
 	if err != nil || len(names) == 0 {
 		this.Data["Host"] = ""
@@ -289,10 +283,8 @@ func (this *MainController) Get() {
 		this.Data["Host"] = value
 	}
 
-	this.Data["IP"] = this.Ctx.Input.IP()
-	remote_addr := []byte(this.Ctx.Request.RemoteAddr)
-	pos := bytes.IndexByte(remote_addr, ':')
-	this.Data["Port"] = string(remote_addr[pos+1:])
+	this.Data["IP"] = getIP(this.Ctx.Request.RemoteAddr)
+	this.Data["Port"] = getPort(this.Ctx.Request.RemoteAddr)
 	this.Data["Method"] = this.Ctx.Request.Method
 	if len(this.Ctx.Request.Header["Accept-Encoding"]) > 0 {
 		this.Data["Encoding"] = this.Ctx.Request.Header["Accept-Encoding"][0]
@@ -324,5 +316,50 @@ func (this *MainController) Get() {
 		this.TplName = "iponly.tpl"
 	} else {
 		this.TplName = "index.tpl"
+	}
+}
+
+func getIPVersion(s string) string {
+	// rs, _ := utf8.DecodeRuneInString(s)
+	for _, r := range s {
+		if r == ':' {
+			return "ipv6"
+		} else if r == '.' {
+			return "ipv4"
+		}
+	}
+	return "ipv4"
+}
+
+func getIP(s string) string {
+	if getIPVersion(s) == "ipv6" {
+		pos := strings.Index(s, "]")
+		if pos == -1 {
+			return s
+		} else {
+			return s[1:pos] // remove [ ]
+		}
+	} else {
+		// ipv4
+		pos := strings.Index(s, ":")
+		return s[0:pos]
+	}
+}
+
+func getPort(s string) string {
+	if getIPVersion(s) == "ipv6" {
+		pos := strings.Index(s, "]")
+		if pos == -1 {
+			return ""
+		}
+		return s[pos+2:]
+	} else {
+		// ipv4
+		pos := strings.Index(s, ":")
+		if pos == -1 {
+			return ""
+		}
+		return s[pos+1:]
+
 	}
 }
